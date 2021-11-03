@@ -25,6 +25,12 @@
                         </svg>
                         <%= @recipe.created_at %>
                     </li>
+                    <li class="list-group-item">
+                    <%= button_to "Löschen", @recipe, :method => :delete, data: { confirm: "Wirklich endgültig löschen?"} %>
+                    </li>
+                    <li class="list-group-item">
+                    <%= button_to "Berarbeiten", edit_recipe_path(@recipe), method: :get %>
+                    </li>
                 </ul>
             </div>
         </div>

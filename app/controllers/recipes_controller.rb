@@ -5,28 +5,44 @@ class RecipesController < ApplicationController
   end
 
 
-    def show
+  def show
     @recipe = Recipe.find(params[:id])
   end
 
 
-    def new
-        @recipe = Recipe.new
-    end
+  def new
+    @recipe = Recipe.new
+  end
 
-    def create
+  def create
+    @recipe = Recipe.new(recipe_params)
+      if @recipe.save 
+        redirect_to @recipe
+      else
+        redirect_to "/"
+        flash[:alert] = "Rezept konnte nicht erstellt werden"
+      end
+  end
 
-        @recipe = Recipe.new(recipe_params)
+  def edit 
+    @recipe = Recipe.find(params[:id])
+  end
+      
+  def update 
+    @recipe = Recipe.find(params[:id]) 
+    @recipe.update(recipe_params)
+    redirect_to @recipe 
+  end
 
-        if @recipe.save 
+  def destroy 
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to '/' 
+  end
 
-        else
 
-          flash[:alert] = "Rezept konnte nicht erstellt werden." 
-          render :action => 'new'
-
-        end
-
-    end
-
+  private
+  def recipe_params
+    params.require(:recipe).permit(:title, :decriptiong, :author_id, :image)
+  end
 end

@@ -8,19 +8,33 @@
                 <h1 class="text-center mt-5">Rezepte</h1>
                 <div class="col card-deck">
                     <% @recipes.each do |recipe| %>
-                            <div class="card show_row align-items-center mt-4 mb-2">  
+                        <div class="card show_row align-items-center mt-4 mb-2">  
                             <%= image_tag recipe.image.variant(resize_to_fit: [300, 300])%>
                                     <div class="card-body">
                                         <p class="card-text text-center">
                                         <%= link_to recipe.title, recipe_path(recipe) %></p>
+                                        <% if %>
+                                             <% recipe == nil%>
+                                             <%= "Keine Bewertungen"  %>
+                                        <% else %>
                                         <% sum = 0 %>
+                                        <% count = 0 %>
                                         <% recipe.ratings.each do |el|%>
-                                        <% sum = sum + el.rating %>
+                                            <% if %>
+                                                <% el.rating == nil %>
+                                                <% sum = sum + 0 %>
+                                            <% else %>
+                                                <% sum = sum + el.rating %>
+                                                <% count = count + 1 %>
+                                            <% end %>
                                         <% end %>
-                                        <%= recipe.ratings.length == 0 ? "Keine Bewertungen" : "Durchschnittliche Bewertung: #{(sum/recipe.ratings.length).round} Sterne" %>
-                                        <p><%= "Anzahl Bewertungen: #{recipe.ratings.length}" %></p>
+                                        <p>
+                                        <%= count > 0 ? "Bewertung: #{(sum / count).round} Sterne" : "Keine Bewertungen"  %>
+                                        </p>
+                                        <%= count > 0 ? "Anzahl Bewertungen: #{count}" : "Keine Bewertungen"  %>
+                            <% end %>                    
                                     </div>
-                            </div>              
+                        </div>              
                     <% end %>
                 </div>
             </div>

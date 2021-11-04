@@ -1,10 +1,11 @@
 <%= form_with model: @rating, class: "nifty_form" do |f| %>
-        <div class="form-group">
-            <%= f.label :rating, "Eigene Bewertung", class:'dropdown-toggle' %>
-            <%= f.select :rating, ["1", "2", "3", "4", "5"] %>
-            <%= f.submit "Bewerten", class: "btn btn-secondary btn-sm ms-2" %>
-        </div>                    
+    <div class="form-group">
+        <%= f.label :rating, "Eigene Bewertung", class:'dropdown-toggle' %>
+        <%= f.select :rating, ["1", "2", "3", "4", "5"] %>
+        <%= f.submit "Bewerten", class: "btn btn-secondary btn-sm ms-2" %>
+    </div>                    
 <% end %>
+
 
 
 

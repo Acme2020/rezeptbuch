@@ -17,17 +17,16 @@
                                         <% recipe.ratings.each do |el|%>
                                         <% sum = sum + el.rating %>
                                         <% end %>
-                                        <%= "Durchschnittliche Bewertung: #{(sum/recipe.ratings.length).round} Sterne" %>
+                                        <%= recipe.ratings.length == 0 ? "Keine Bewertungen" : "Durchschnittliche Bewertung: #{(sum/recipe.ratings.length).round} Sterne" %>
                                         <p><%= "Anzahl Bewertungen: #{recipe.ratings.length}" %></p>
                                     </div>
                             </div>              
                     <% end %>
                 </div>
     <% else %>
-                <h1>Sorry, keine Rezepte vorhanden :-(</h1>
-            
+        <h1>Sorry, keine Rezepte vorhanden :-(</h1>      
     <% end %>
-    </div>
+        </div>
     <div class="col">
     </div>
 </div>

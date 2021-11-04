@@ -1,14 +1,12 @@
 class RecipesController < ApplicationController
-
   def index
     @recipes = Recipe.all
   end
 
-
   def show
     @recipe = Recipe.find(params[:id])
+    @ingredients = @recipe.ingredients.all
   end
-
 
   def new
     @recipe = Recipe.new
@@ -16,32 +14,32 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-      if @recipe.save 
-        redirect_to @recipe
-      else
-        redirect_to "/"
-        flash[:alert] = "Rezept konnte nicht erstellt werden"
-      end
+    if @recipe.save
+      redirect_to @recipe
+    else
+      redirect_to '/'
+      flash[:alert] = 'Rezept konnte nicht erstellt werden'
+    end
   end
 
-  def edit 
+  def edit
     @recipe = Recipe.find(params[:id])
   end
-      
-  def update 
-    @recipe = Recipe.find(params[:id]) 
+
+  def update
+    @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
-    redirect_to @recipe 
+    redirect_to @recipe
   end
 
-  def destroy 
+  def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to '/' 
+    redirect_to '/'
   end
 
-
   private
+
   def recipe_params
     params.require(:recipe).permit(:title, :description, :author_id, :image)
   end

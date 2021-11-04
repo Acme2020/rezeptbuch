@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
-  belongs_to :Author
+  has_one :author
   has_one_attached :image
   has_many :ingredients
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 end

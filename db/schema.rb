@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_03_183326) do
+ActiveRecord::Schema.define(version: 2021_11_03_234201) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,24 +51,22 @@ ActiveRecord::Schema.define(version: 2021_11_03_183326) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "rating"
-    t.integer "Recipe_id", null: false
+    t.integer "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Recipe_id"], name: "index_ratings_on_Recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
-    t.string "author"
     t.string "description"
-    t.integer "Author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Author_id"], name: "index_recipes_on_Author_id"
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_recipes_on_author_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ingredients", "Recipes"
-  add_foreign_key "ratings", "Recipes"
-  add_foreign_key "recipes", "Authors"
+  add_foreign_key "ratings", "Recipes", column: "recipe_id"
+  add_foreign_key "recipes", "authors"
 end

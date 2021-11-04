@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 root "recipes#index"
 resources :recipes do
+   post "/",  to: "ratings#create" , :as => "create_rating" 
   resources :ingredients
   end
 resources :categories, only: [:index]

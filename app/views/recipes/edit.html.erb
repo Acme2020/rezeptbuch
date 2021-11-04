@@ -1,17 +1,22 @@
 <div class="container"> 
     <div class="row">
-        <div class="col-4">
-            <h1> Rezeptänderung </h1>
-                <%= form_with model: @recipe, class: "nifty_form" do |f| %>
+        <div class="col">
+        </div>
+        <div class="col">
+            <h1 class="text-center mt-5" > Rezeptänderung </h1>
+                <%= form_with model: @recipe , class: "nifty_form" do |f| %>
                     <div class="form-group row">
                         <%= f.label :title, "Name", class:'control-label' %>
-                        <%= f.text_field :title, class: "form-control" %>
-                    </div>
+                        <%= f.text_field :title, class: "form-control mb-2" %>
+                        <%= f.label :description, "Beschreibung", class:'control-label' %>
+                        <%= f.text_field :description, required: true, class: "user-input form-control mb-4" %>
+                        </div>
                     <div class="form-group row">
- 
-                        <%= f.submit "Update", class: "btn btn-primary btn-space" %> 
+                        <%= f.submit "Update", class: "btn btn-primary" %> 
                     </div>
                 <% end %>
+        </div>
+        <div class="col">
         </div>
     </div>
 </div>

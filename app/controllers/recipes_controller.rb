@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.build_author
   end
 
   def create
@@ -41,6 +42,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :author_id, :image)
+    params.require(:recipe).permit(:title, :description, :image, author_attributes: [:name])
   end
 end

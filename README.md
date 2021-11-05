@@ -1,6 +1,6 @@
 # README
 
-<h3> Technology </h3>
+<h3> technology </h3>
 
 <li> Ruby 2.7.0 </li>
 

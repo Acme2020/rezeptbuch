@@ -1,25 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 2.7.0
+Rails 6.0.4.1
+SQLite 3.31.1 
+gem 'image_processing' enabled
+uses active storage for file uploads
+bootstrap 5.1
 
-Things you may want to cover:
+The data model was build in order to achieve an equilibrium between simplicity and normalization. The author model is currently of limited use however it can be extended in future iterations to reduce duplicates by giving the user the possbility to choose from existing authors or to create new ones. Same goes for ingredients. It would be more efficient to further normalize the structre of the model as the amount of data grows. It has been decided because of limited data to calculate ratings on the client side. However an implementation on the backend would be easy to do. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# rezeptbuch
+Bootstrap has been used to make sure the page looks consistant on desktop as on mobile devices. For upcoming iterations there ist still a lot of room for improvements. One could use a burger menu as the navbar collapses for example. Also no custom JS has been used which would enhance UX significantly. The ultilization of a JS framework like React or mybe Svelte would be a good option.
